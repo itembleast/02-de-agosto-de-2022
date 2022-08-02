@@ -1,0 +1,965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cabecera" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-90 Set @FechaFin = '31-12-2030' 
+SELECT Distinct T0.series,T0.refdate'refdate', T0.DueDate,T0.TaxDate,T0.Memo,T0.ref1,t0.ref2,T0.ref3,T0.Project,
+T0.TransCode, cast(T1.TransID as nvarchar) 'TransID',T1.Baseref
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%' And T0.CreatedBy ='%1%' </value>
+  </data>
+  <data name="CabeceraAsientosManuales" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-95 Set @FechaFin = '31-12-2030' 
+SELECT Distinct T0.series,T0.refdate,T0.DueDate,T0.TaxDate,T0.Memo,T0.ref1,t0.ref2,T0.ref3,T0.Project,
+T0.TransCode, cast(T1.TransID as nvarchar) 'TransID',T1.Baseref
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] WHERE T0.RefDate &gt;@FechaIni and T0.TransId='%0%' </value>
+  </data>
+  <data name="Cab_NC" xml:space="preserve">
+    <value>/* Select From [DBO].[OJDT] M0 */
+Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+/* WHERE */
+Set DateFormat DMY
+Set @FechaIni =getdate()-250
+Set @FechaFin ='31-12-2030' 
+Select Distinct Top 1 'JOUR' As 'Indicador', A2.U_IdIntegra, A0.DocDate As 'RefDate', A0.TaxDate As 'TaxDate', A0.DocDueDate As 'DueDate', 
+cast(A0. DocNum as nvarchar) As 'Ref1', '' As 'Ref2', A0.JrnlMemo As 'Memo', 'I' As 'U_OK1_IFRS', A0.CardCode, 
+cast(A3.TransId as nvarchar) 'TransId', Cast(A0.DocTotal/A4.DocTotal as numeric(19,2)) As 'Perc',A0.Project 'Project' 
+From ORIN A0 
+Left Join RIN1 A1 On A0.DocEntry = A1.DocEntry 
+Left Join OADM A2 On 1 = 1 
+Inner Join OJDT A3 On cast(A1.BaseDocNum as nvarchar) = A3.Ref1 and A3.memo not like '%Pago%'
+Inner Join OINV A4 On A1.BaseEntry = A4.DocEntry 
+Where A0.DocEntry = '%0%' And A3.TransType = '30' and A3.RefDate &gt; @FechaIni </value>
+  </data>
+  <data name="conse_log" xml:space="preserve">
+    <value>SELECT count(code) as 'nro' FROM [dbo].[@ASIENTOS_LOG_ERROR]  T0</value>
+  </data>
+  <data name="consl_table" xml:space="preserve">
+    <value>SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='%0%'</value>
+  </data>
+  <data name="consl_table_campo" xml:space="preserve">
+    <value>SELECT * 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE COLUMN_NAME = '%0%' and TABLE_NAME='%1%'</value>
+  </data>
+  <data name="doc_pendientes" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+Set DateFormat DMY
+Set @FechaIni = getdate()-95
+Set @FechaFin = '31-12-2030'
+Select *
+From
+(
+	Select '01 - Factura de Venta' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep  
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.LineNum, A2.TransId 'TransId_2doAsiento', A1.Project, A0.U_EsIndep 
+		From OINV A0
+		Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry And A1.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+		Left Join OJDT A2 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A2.Ref1, '') And A2.U_OK1_IFRS = 'I' And A2.Memo Like '%Factura%' and a2.RefDate&gt;=@FechaIni--concat('01-01-',datepart(yyyy,GETDATE()))
+		Or Cast(A0.DocNum As Nvarchar(500)) = IsNull(A2.Ref1, '') And A2.U_OK1_IFRS = 'I' And A2.Memo Like '%Invoice%'  and a2.RefDate&gt;=@FechaIni--concat('01-01-',datepart(yyyy,GETDATE()))
+		Where A0.DocDate Between @FechaIni And @FechaFin
+		And A0.DocSubType = '--'
+		And A0.DocNum Not In (81190, 81191, 81192, 81193, 81194, 81195, 81196, 81197, 81198, 81199, 81200, 81201, 81202, 81203, 81204, 81205, 81206, 81207, 81208, 81209, 81186,  82217,  82218)
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+
+	Select '02 - Nota Crédito Clientes' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.LineNum, A2.TransId 'TransId_2doAsiento', A1.Project, A0.U_EsIndep 
+		From ORIN A0
+		Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry And A1.LineNum = (Select Min(B0.LineNum) From RIN1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+		Left Join OJDT A2 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A2.Ref1, '') And A2.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+		And A0.DocNum Not In (1302530, 1302536, 1302532, 1302537, 1302526, 1302522, 1302528, 1302534, 1302821, 1302822, 1303067, 1303068)
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+	------------------------------------OLD--------------------------
+	--Select Distinct '03 - Pagos Recibidos' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	--From
+	--( 
+	--	Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS 
+	--	From ORCT A0
+	--	Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And A1.U_OK1_IFRS = 'I'
+	--	Inner Join RCT2 A2 On A0.DocEntry = A2.DocNum 
+	--	Inner Join OINV A3 ON A2.DocEntry = A3.DocEntry And Year(A3.DocDate) &gt;= Year(@FechaIni)
+	--	Where A0.DocDate Between @FechaIni And @FechaFin
+	--	And A0.DocNum Not In (31219)
+	--)B0 Where B0.TransId_2doAsiento Is Null
+	---------------------------------cierra OLD-----------------------------
+
+		  ---------------------------------OLD2-----------------------------
+	--	Select Distinct '03 - Pagos Recibidos' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	--From
+	--( 
+	--	Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS
+	--	From ORCT A0
+	--	Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And A1.U_OK1_IFRS = 'I'
+	--	left Join RCT2 A2 On A0.DocEntry = A2.DocNum 
+	--	left Join OINV A3 ON A2.DocNum = A3.DocNum And Year(A3.DocDate) &gt;= Year(@FechaIni)
+	--	Where A0.DocDate Between @FechaIni And @FechaFin And A0.DocNum Not In (31219) 
+	--)B0 Where B0.TransId_2doAsiento Is Null 
+
+              ---------------------------------cierra OLD 2-----------------------------
+
+		Select Distinct '03 - Pagos Recibidos' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS
+		From ORCT A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') 
+		And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		left Join RCT2 A2 On A0.DocEntry = A2.DocNum 
+		left Join OINV A3 ON A2.DocNum = A3.DocNum And Year(A3.DocDate) &gt;= Year(@FechaIni)
+		Where A0.DocDate Between @FechaIni And @FechaFin And A0.DocNum Not In (31219) and A1.TransType='24' 
+	)B0 Where B0.TransId_2doAsiento Is Null 
+
+	Union All
+
+	Select '04 - Factura de Anticipo de Venta' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.LineNum, A2.TransId 'TransId_2doAsiento', A1.Project, A0.U_EsIndep
+		From ODPI A0
+		Inner Join DPI1 A1 On A0.DocEntry = A1.DocEntry And A1.LineNum = (Select Min(B0.LineNum) From DPI1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+		Left Join OJDT A2 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A2.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A2.Ref2, '') And IsNull(A0.JrnlMemo, '') = IsNull(A2.Memo, '') And A2.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+		And A0.Posted = 'Y'
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+
+	Select '05 - Nota Debito de C' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_EsIndep 
+		From OINV A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+		And A0.DocSubType = 'DN' 
+		And A0.U_ACS_JourIfrs = 'Si'
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+
+	Select 
+	Case When B0.DocSubType = '--' Then '06 - Factura de Proveedor' Else '06 - Nota Débito de Proveedor' End 'Tipo', 
+	B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_EsIndep, A0.DocSubType
+		From OPCH A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin 
+		And A0.DocNum Not In (2879)
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+
+	Select '07 - Nota Crédito de Proveedor' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_EsIndep 
+		From ORPC A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+-------------------------------------------------------------------OLD--------
+	/*Select '08 - Pagos Efectuados' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS  
+		From OVPM A0
+		Inner Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+	)B0 Where B0.TransId_2doAsiento Is Null*/
+-----------------------------------------------------------------------Cierre OLD-------  
+	Select '08 - Pagos Efectuados' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	From
+	( 
+		select J0.DocEntry, J0.docnum, J0.DocDate,j1.TransId 'TransId_1erAsiento',J0.Comments,j2.TransId 'TransId_2doAsiento',J0.U_OK1_IFRS, 
+		J1.Memo  
+		from OVPM J0
+		left join OJDT J1 On J0.DocNum=j1.BaseRef
+		left Join OJDT J2 On cast(J1.BaseRef As Nvarchar(500)) =j2.Ref1 and cast(j1.TransId As Nvarchar(500))=j2.Ref2
+		where J0.DocDate Between @FechaIni And @FechaFin and J1.CreateDate&gt;=@FechaIni  and J1.TransType='46'
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+
+	Select '09 - Factura de Anticipo de Proveedor' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_EsIndep 
+		From ODPO A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate Between @FechaIni And @FechaFin
+		And A0.DocSubType = '--'
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+	Union All
+	--------------------------------------------------------OLD----------------------------------------------------
+	/*Select '10 - Asientos a partir de Asientos Manuales' 'Tipo', B0.TransId, B0.Number, B0.RefDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	From
+	( 
+		Select A0.TransId, A0.Number, A0.RefDate, A0.TransId 'TransId_1erAsiento', A0.Memo, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS 
+		From OJDT A0
+		Left Join OJDT A1 On Cast(A0.Number As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('Nom','Caja','DIFC','TRAS','Ncon')
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('OKIM') 
+		And (Select Count(*) From JDT1 B0 Where B0.TransId = A0.TransId And Substring(B0.Account, 1, 2) In ('51', '52', '53')) &gt; 0
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.TransType In ('1470000049', '321') 
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null                                                                                  And A0.Memo Not Like '%Capitalización%'                         And A0.Memo Not Like '%Capitalization%' 
+                            And A0.TransID not in(SELECT T0.[TransId] FROM OJDT T0  INNER JOIN JDT1 T1 ON T0.[TransId] = T1.[TransId] INNER JOIN OACT T2 ON T1.[Account] = T2.[AcctCode] WHERE number='264375' and  T2.[U_CTA_IFRS] Is Null)
+	)B0 Inner Join
+	(
+		Select A0.TransId, Sum(IsNull(A2.Debit, 0)) 'Valor'
+		From OJDT A0
+		Left Join JDT1 A2 On A0.TransId = A2.TransId
+		Where A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('Nom','Caja','DIFC','TRAS','Ncon')
+		And A0.U_OK1_IFRS != 'I'
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('OKIM') 
+		And (Select Count(*) From JDT1 B0 Where B0.TransId = A0.TransId And Substring(B0.Account, 1, 2) In ('51', '52', '53')) &gt; 0
+		And A0.U_OK1_IFRS != 'I'
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.TransType In ('1470000049', '321') 
+		And A0.U_OK1_IFRS != 'I'
+		Group By A0.TransId
+		Having Sum(IsNull(A2.Debit, 0)) != 0
+	)B1 On B0.TransId_1erAsiento = B1.TransId
+	Where B0.TransId_2doAsiento Is Null and B0.TransId not in (select transid from jdt1 where Substring(Account, 1, 2) In ('73') )
+	*/
+	-----------------------------------CIERRA OLD-----------------------------------------------------
+		Select '10 - Asientos a partir de Asientos Manuales' 'Tipo', B0.TransId, B0.Number, B0.RefDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS 
+	From
+	( 
+		Select A0.TransId, A0.Number, A0.RefDate, A0.TransId 'TransId_1erAsiento', A0.Memo, A1.TransId 'TransId_2doAsiento', A0.U_OK1_IFRS 
+		From OJDT A0
+		Left Join OJDT A1 On Cast(A0.Number As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('Nom','Caja','DIFC','TRAS','Ncon')
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('OKIM') 
+		And (Select Count(*) From JDT1 B0 Where B0.TransId = A0.TransId And Substring(B0.Account, 1, 2) In ('51', '52', '53')) &gt; 0
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.TransType In ('1470000049', '321') 
+		And A0.U_OK1_IFRS != 'I'
+		And A0.TransId Not In (Select StornoToTr From OJDT Where StornoToTr Is Not Null)
+		And A0.StornoToTr Is Null                                                                            And A0.Memo Not Like '%Capitalización%'                         And A0.Memo Not Like '%Capitalization%' 
+	)B0 Inner Join
+	(
+		Select A0.TransId, Sum(IsNull(A2.Debit, 0)) 'Valor'
+		From OJDT A0
+		Left Join JDT1 A2 On A0.TransId = A2.TransId
+		Where A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('Nom','Caja','DIFC','TRAS','Ncon')
+		And A0.U_OK1_IFRS != 'I'
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.Memo Not Like '%Anulac%'
+		And A0.TransCode In ('OKIM') 
+		And (Select Count(*) From JDT1 B0 Where B0.TransId = A0.TransId And Substring(B0.Account, 1, 2) In ('51', '52', '53')) &gt; 0
+		And A0.U_OK1_IFRS != 'I'
+		Or A0.RefDate Between @FechaIni And @FechaFin
+		And A0.TransType In ('1470000049', '321') 
+		And A0.U_OK1_IFRS != 'I'
+		Group By A0.TransId
+		Having Sum(IsNull(A2.Debit, 0)) != 0
+	)B1 On B0.TransId_1erAsiento = B1.TransId and B0.TransId_1erAsiento not in('444022')
+	Where B0.TransId_2doAsiento Is Null
+)Z0 
+/*where Z0.DocNum='42760' not in ('42751','42681','42760')*/                    %0% 
+Order By Z0.Tipo, Z0.DocNum</value>
+  </data>
+  <data name="lineas" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime 
+Declare @FechaFin As DateTime 
+Set DateFormat DMY 
+Set @FechaIni = getdate()-60
+Set @FechaFin = '31-12-2030' 
+select aa.Line_ID,aa.shortname,aa.acctcode,aa.U_CTA_IFRS, aa.Debit,Credit,
+case when isnull(aa.U_InfoCo01,'')='' then t3.cardcode else aa.U_InfoCo01 end 'U_InfoCo01',
+aa.Project,aa.LineMemo,aa.b,t3.CardCode 
+from (
+	SELECT T1.Line_ID,T1.shortname,t2.acctcode,T2.U_CTA_IFRS, T1.Debit,Credit,T1.U_InfoCo01,
+	T1.Project,T1.LineMemo, 
+	  replace(	
+		replace(
+		  replace(
+			replace(
+			  replace(
+				replace(   
+				 replace(  
+				   replace(	 
+					 replace(
+					   replace(
+						 replace(
+						   replace(
+									LineMemo,'Pagos efectuados - ',''
+								  ),'Fact.proveedores - ',''
+								),'A/R Invoices - ',''
+							   ),'Facturas clientes - ',''
+							),'Factura de proveedores - Cancelación - ',''
+						  ),'A/P Invoices - ',''
+						),'Anticipo de clientes - ',''
+					   ),'Pagos recibidos - ',''
+					 ),'Notas de crédito clientes - ',''
+				  ),'A/R Credit Memos - ',''
+				),'(Reversal) - 276504',''
+			  ),'(Reversal) - 276503',''
+			)'b'
+	FROM OJDT T0 
+	Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId 
+	INNER JOIN OACT T2 ON T1.[Account] = T2.[AcctCode] 
+	WHERE /*T0.RefDate &gt; @FechaIni and*/ T0.BaseRef='%0%' And T0.CreatedBy ='%1%' and T0.TransId='%2%' 
+)aa
+left join OCRD T3 on T3.CardCode=aa.b</value>
+  </data>
+  <data name="LineasAsientosManuales" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-95 Set @FechaFin = '31-12-2030' 
+SELECT T1.Line_ID,T1.shortname,t2.acctcode,T2.U_CTA_IFRS, T1.Debit,Credit,T1.U_InfoCo01,
+T1.Project,T1.LineMemo,t1.profitcode 'Norma_Reparto',t1.OcrCode2 'Norma_Reparto2' 
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] WHERE T0.RefDate &gt;@FechaIni and T0.TransId='%2%'</value>
+  </data>
+  <data name="lineasfac" xml:space="preserve">
+    <value>Select 'LINJOUR' As 'Indicador', P0.U_AcctCode, Case When P1.LocManTran = 'Y' Then P0.CardCode Else P0.U_AcctCode End CardCode, P0.U_Concepto, P0.U_Debit, P0.U_Credit, IsNull(P0.Project,'')Project, IsNull(P0.U_ProfitCode,'')ProfitCode
+			From (
+				Select A2.U_AcctCode, A2.U_AcctCode As 'CardCode', A2.U_Concepto, IsNUll(A2.U_Debit,0) 'U_Debit', IsNull(A2.U_Credit,0) 'U_Credit', A1.Project, A2.U_ProfitCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41'
+				Where A0.DocEntry = '%0%'
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode
+							
+				Union All
+										
+				Select IsNUll(B0.U_CTA_IFRS,''), IsNUll(B0.U_CTA_IFRS,''), 'Contrapartida', Sum(IsNull(B0.U_Credit,0)), Sum(IsNull(B0.U_Debit,0)), B0.Project, B0.U_ProfitCode 
+				From ( 
+				Select A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode 
+				From OINV A0 
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry 
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41' 
+				Left join OCRD A3 On A0.CardCode = A3.CardCode 
+				Left Join OACT A4 On A3.DebPayAcct = A4.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode 
+				)B0 
+				Left Join OCRD B1 On B0.CardCode = B1.CardCode 
+				Group By B1.CardCode, B0.U_CTA_IFRS, B0.Project, B0.U_ProfitCode 
+							
+				Union All
+							
+				Select A2.U_AcctCode, A2.U_AcctCode, A2.U_Concepto, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+				Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+				Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode
+							
+				Union All
+							
+				Select A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project, A1.U_ProfitCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				(
+					Select A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode
+						From OINV A0
+						Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+						Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+						Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+						Group By A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode
+				) A1 On A0.U_Cuenta = A1.U_AcctCode
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.U_ProfitCode 
+							
+				Union All
+							
+				Select A3.U_CTA_IFRS 'Cuenta', A3.U_CTA_IFRS, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'Credito', 0 As 'Debito', A4.Project As 'Project', '' As 'U_ProfitCode'
+				From OINV A0
+				Inner Join INV5 A1 On A0.DocEntry = A1.AbsEntry
+				Left Join OWHT A2 On A1.WTCode = A2.WTCode
+				Left Join OACT A3 On A1.Account = A3.AcctCode
+                                                        Inner Join INV1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+				Where A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Debit, A1.U_Credit, A1.Project As 'U_Project', '' As 'U_ProfitCode'
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'U_Credit', 0 As 'U_Debit', A4.Project
+					From OINV A0
+					Inner Join INV5 A1 On A0.DocEntry = A1.AbsEntry
+					Left Join OWHT A2 On A1.WTCode = A2.WTCode
+					Left Join OACT A3 On A1.Account = A3.AcctCode
+                                                                      Inner Join INV1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+					Where A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Debit, A1.U_Credit 
+							
+				Union All
+							
+				Select A3.U_CTA_IFRS  'Cuenta', A3.U_CTA_IFRS, 'IVA' 'Concepto', 0 As 'Debito', IsNull(A1.VatSum,0) 'Credito', A1.Project As 'U_Project', '' As 'U_ProfitCode'
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+				Left Join OSTA A2 On A1.TaxCode = A2.Code
+				Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+							
+				Union All
+							
+				Select A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project As 'U_Project', '' As 'U_ProfitCode'
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'IVA' 'Concepto', 0 As 'U_Debit', IsNull(A1.VatSum,0) 'U_Credit', A1.Project
+					From OINV A0
+					Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+					Left Join OSTA A2 On A1.TaxCode = A2.Code
+					Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+					Where A0.DocEntry = '%0%'
+					Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Credit 
+							
+				Union All
+							
+				Select A2.U_CTA_IFRS 'Cuenta', A2.U_CTA_IFRS, 'A. INTERES MORA' As 'Concepto', 0 As 'Debito', IsNull(A1.LineTotal,0) 'Credito', A1.Project, A1.OcrCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+				Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+				Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit' , A1.Project, A1.OcrCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A2.U_CTA_IFRS 'Cuenta', A0.CardCode, 'A. INTERES MORA' As 'Concepto', 0 As 'U_Debit', IsNull(A1.LineTotal,0) 'U_Credit', A1.Project, A1.OcrCode
+					From OINV A0
+					Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+					Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+					Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.OcrCode 
+			)P0
+			Left Join OACT P1 On P0.U_AcctCode = P1.AcctCode</value>
+  </data>
+  <data name="lineasfac2" xml:space="preserve">
+    <value>Select P0.num,'LINJOUR' As 'Indicador', P0.U_AcctCode, Case When P1.LocManTran = 'Y' Then P0.CardCode Else P0.U_AcctCode End CardCode, P0.U_Concepto, P0.U_Debit, P0.U_Credit, 
+IsNull(P0.Project,'')Project, IsNull(P0.U_ProfitCode,'')ProfitCode,P0.InfoCo01,'' 'LineMemo'
+			From (
+				Select 1 'num',A2.U_AcctCode, A2.U_AcctCode As 'CardCode', A2.U_Concepto, IsNUll(A2.U_Debit,0) 'U_Debit', IsNull(A2.U_Credit,0) 'U_Credit', 
+				A1.Project, A2.U_ProfitCode,A0.cardcode 'InfoCo01'
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry 
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41'
+				Where A0.DocEntry = '%0%'
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode,A0.cardcode
+							
+				Union All
+										
+				Select '2',IsNUll(B0.U_CTA_IFRS,''), IsNUll(B0.U_CTA_IFRS,''), 'Contrapartida', Sum(IsNull(B0.U_Credit,0)), Sum(IsNull(B0.U_Debit,0)), B0.Project, B0.U_ProfitCode,B0.cardcode 
+				From ( 
+				Select A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode
+				From OINV A0 
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry 
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41' 
+				Left join OCRD A3 On A0.CardCode = A3.CardCode 
+				Left Join OACT A4 On A3.DebPayAcct = A4.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode,A0.cardcode 
+				)B0 
+				Left Join OCRD B1 On B0.CardCode = B1.CardCode 
+				Group By B1.CardCode, B0.U_CTA_IFRS, B0.Project, B0.U_ProfitCode,B0.cardcode 
+							
+				Union All
+							
+				Select '3', A2.U_AcctCode, A2.U_AcctCode, A2.U_Concepto, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,A0.CardCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+				Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+				Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode
+							
+				Union All
+							
+				select '4' 'num', J0.Cuenta,J0.[I.], J0.U_Concepto, J0.U_Debit, J0.U_Credit, J0.Project, J0.U_ProfitCode,J0.CardCode
+				FROM
+				(
+					Select A0.U_Contrapartida'Cuenta', A0.U_Contrapartida'I.', A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project, A1.U_ProfitCode,
+					case when A0.U_Concepto like 'CAPITAL MTO.' and A1.U_Concepto='CAPITAL LLANTAS' THEN '1' 
+					WHEN A0.U_Concepto like 'CAPITAL LLANTAS' and A1.U_Concepto='CAPITAL MANTENIMIENTO IFRS' THEN '1'                                   
+					WHEN A0.U_Concepto='CAPITAL GASTOS' AND A1.U_Concepto='CAPITAL CUPO' THEN '1' 
+					WHEN A0.U_Concepto='CAPITAL CUPO' AND A1.U_Concepto='CAPITAL GASTOS OPERACION PUBLICO IFRS' THEN '1' 					
+					WHEN A0.U_Concepto like 'CAPITAL MTO.' and A1.U_Concepto='Mantenimiento' THEN '1'     
+					ELSE '2' END 'TEST',A1.CardCode
+					From [@ACS_CTACONCEPTO] A0
+					Inner Join
+					(
+						Select A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,a2.U_Concepto,A0.CardCode
+							From OINV A0
+							Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+							Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+							Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+							Group By A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,a2.U_Concepto,A0.CardCode
+					) A1 On A0.U_Cuenta = A1.U_AcctCode
+					Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.U_ProfitCode,a1.U_Concepto,A1.CardCode
+				)J0
+				where J0.TEST&lt;&gt;'1'
+
+				Union All
+							
+				Select '5',A3.U_CTA_IFRS 'Cuenta', A3.U_CTA_IFRS, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'Credito', 0 As 'Debito', A4.Project As 'Project', 
+				'' As 'U_ProfitCode',a0.CardCode
+				From OINV A0
+				Inner Join INV5 A1 On A0.DocEntry = A1.AbsEntry
+				Left Join OWHT A2 On A1.WTCode = A2.WTCode
+				Left Join OACT A3 On A1.Account = A3.AcctCode
+                Inner Join INV1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+				Where A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select '6',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Debit, A1.U_Credit, A1.Project As 'U_Project', '' As 'U_ProfitCode',a1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'U_Credit', 0 As 'U_Debit', A4.Project
+					From OINV A0
+					Inner Join INV5 A1 On A0.DocEntry = A1.AbsEntry
+					Left Join OWHT A2 On A1.WTCode = A2.WTCode
+					Left Join OACT A3 On A1.Account = A3.AcctCode
+                    Inner Join INV1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+					Where A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Debit, A1.U_Credit ,a1.CardCode
+							
+				Union All
+							
+				Select '7',A3.U_CTA_IFRS  'Cuenta', A3.U_CTA_IFRS, 'IVA' 'Concepto', 0 As 'Debito', IsNull(A1.VatSum,0) 'Credito', A1.Project As 'U_Project', '' As 'U_ProfitCode',a0.CardCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+				Left Join OSTA A2 On A1.TaxCode = A2.Code
+				Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+							
+				Union All
+							
+				Select '8',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project As 'U_Project', '' As 'U_ProfitCode',A1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'IVA' 'Concepto', 0 As 'U_Debit', IsNull(A1.VatSum,0) 'U_Credit', A1.Project
+					From OINV A0
+					Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+					Left Join OSTA A2 On A1.TaxCode = A2.Code
+					Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+					Where A0.DocEntry = '%0%'
+					Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Credit,a1.CardCode
+							
+				Union All
+							
+				Select '9',A2.U_CTA_IFRS 'Cuenta', A2.U_CTA_IFRS, 'A. INTERES MORA' As 'Concepto', 0 As 'Debito', IsNull(A1.LineTotal,0) 'Credito', A1.Project, A1.OcrCode,a0.CardCode
+				From OINV A0
+				Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+				Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+				Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select '10',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit' , A1.Project, A1.OcrCode,a1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A2.U_CTA_IFRS 'Cuenta', A0.CardCode, 'A. INTERES MORA' As 'Concepto', 0 As 'U_Debit', IsNull(A1.LineTotal,0) 'U_Credit', A1.Project, A1.OcrCode
+					From OINV A0
+					Inner Join INV1 A1 On A0.DocEntry = A1.DocEntry
+					Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+					Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.OcrCode,a1.CardCode 
+			)P0
+			Left Join OACT P1 On P0.U_AcctCode = P1.AcctCode</value>
+  </data>
+  <data name="Lin_NC" xml:space="preserve">
+    <value>Select 'LINJOUR' As 'Indicador', A1.Account As 'U_AcctCode', A1.ShortName As 'CardCode', 
+/*Cast(A1.Debit * replace('%1%',',','.') As Numeric(19, 2)) As 'U_Credit', 
+Cast(A1.Credit * replace('%1%',',','.') As Numeric(19,2)) As 'U_Debit',//se quitan por error en la nc 1308383 y otras.. */ A1.Debit As 'U_Credit', A1.Credit As 'U_Debit',
+A1.Project, A1.ProfitCode, A1. U_Concepto ,A2.CardCode 'U_InfoCo01' 
+From OJDT A0
+Inner Join JDT1 A1 On A0.TransId = A1.TransId 
+inner join OCRD A2 On replace(replace(replace(A0.Memo,'Facturas clientes - ',''),'A/R Invoices - ',''),'Notas de crédito clientes - ','')=A2.CardCode
+Where A0.TransId = '%0%'
+Union All
+Select B0.Indicador, '53969501R', '53969501R', 
+Case When Sum(B0.U_Debit) - Sum(B0.U_Credit) &gt; 0 And Sum(B0.U_Debit) - Sum(B0.U_Credit) &lt; 1 Then Sum(B0.U_Debit) - Sum(B0.U_Credit) Else 0 End 'Credit', 
+Case When Sum(B0.U_Credit) - Sum(B0.U_Debit) &gt; 0 And Sum(B0.U_Credit) - Sum(B0.U_Debit) &lt; 1 Then Sum(B0.U_Credit) - Sum(B0.U_Debit) Else 0 End 'Debit', 
+'', '', '' ,B0.U_InfoCo01 'U_InfoCo01' 
+From
+(
+	Select 'LINJOUR' As 'Indicador', A1.Account As 'U_AcctCode', A1.ShortName As 'CardCode', 
+	Cast(A1.Debit * replace('%1%',',','.') As Numeric(19, 2)) As 'U_Credit', 
+	Cast(A1.Credit * replace('%1%',',','.') As Numeric(19,2)) As 'U_Debit', 
+	A1.Project, A1.ProfitCode, A1. U_Concepto,a2.CardCode 'U_InfoCo01' 
+	From OJDT A0
+	Inner Join JDT1 A1 On A0.TransId = A1.TransId 
+	inner join OCRD A2 ON replace(replace(replace(A0.Memo,'Facturas clientes - ',''),'A/R Invoices - ',''),'Notas de crédito clientes - ','')=A2.cardcode
+	Where A0.TransId = '%0%'
+) B0 
+Group By B0.Indicador,b0.U_InfoCo01</value>
+  </data>
+  <data name="NC_Pendientes" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+Set DateFormat DMY
+Set @FechaIni =getdate()-95
+Set @FechaFin = '31-12-2030'
+
+Select *
+From
+(
+
+
+	Select '02 - Nota Crédito Clientes' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep ,b0.ItemCode1
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.LineNum, A2.TransId 'TransId_2doAsiento', A1.Project, A0.U_EsIndep, 
+		(select count(*) from rin1 J0 where J0.DocEntry=A1.DocEntry) 'ItemCode1'
+		From ORIN A0
+		Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry And A1.LineNum = (Select Min(B0.LineNum) From RIN1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+		Left Join OJDT A2 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A2.Ref1, '') And A2.U_OK1_IFRS = 'I'                             Inner Join OINV A3 On A1.BaseEntry=A3.DocEntry and A0.Doctotal%1%A3.Doctotal /*'=' se hacen las nc completas, &lt;&gt; se hacen las nc parciales*/
+		Where A0.DocDate &gt;@FechaIni And A0.DocNum Not In (1302530, 1302536, 1302532, 1302537, 1302526, 1302522, 1302528, 1302534, 1302821, 1302822, 1303067, 1303068) /*and isnull((Select isnull(count(*),0) From RIN1 B0 Where B0.DocEntry = A0.DocEntry and b0.ItemCode='INT_MORA' Group By B0.DocEntry),0)&lt;&gt;1*/
+	)B0 Where B0.TransId_2doAsiento Is Null and B0.ItemCode1&gt;0
+
+
+)Z0 
+/*where Z0.DocNum='42760' not in ('42751','42681','42760')*/
+%0%
+Order By Z0.Tipo, Z0.DocNum</value>
+    <comment>trae las Notas de credito pendientes</comment>
+  </data>
+  <data name="CabeceraRecibosPago" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-45 Set @FechaFin = '31-12-2030' 
+SELECT Distinct T0.series,T0.refdate,T0.DueDate,T0.TaxDate,T0.Memo,T0.ref1,t0.ref2,T0.ref3,T0.Project,
+T0.TransCode, cast(T1.TransID as nvarchar) 'TransID',T1.Baseref,t3.CardCode
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] Inner JOin ORCT t3 on t3.DocEntry='%0%' WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%' And T0.TransID ='%1%' /*And T0.CreatedBy ='%1%'*/  --and T0.StornoToTr is null order by 5 desc</value>
+  </data>
+  <data name="FactCantLineasSinPedido" xml:space="preserve">
+    <value>Select count(*) 'cant'
+From OINV j0
+inner join inv1 j1 on j0.docentry=j1.docentry
+inner join ORDR j2 on j1.baseref=j2.Docentry
+Where j0.DocEntry='%0%'</value>
+    <comment>indica si la factura tiene pedido base, 0 para indicar que no tiene pedido 1 o mas indica que si tiene.</comment>
+  </data>
+  <data name="Cabecera_Pagos_Efec" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-45 
+SELECT Distinct T0.series,T0.refdate,T0.DueDate,T0.TaxDate,T0.Memo,T0.ref1,t0.ref2,T0.ref3,T0.Project,
+T0.TransCode, cast(T1.TransID as nvarchar) 'TransID',T1.Baseref
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] WHERE T0.RefDate &gt; @FechaIni  and T0.BaseRef='%0%' And T0.TransID ='%1%'</value>
+  </data>
+  <data name="Pagos_Efec_Pendientes" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+Set DateFormat DMY
+Set @FechaIni = getdate()-45
+Set @FechaFin = '31-12-2030'
+Select *
+From
+(
+	Select '08 - Pagos Efectuados' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS ,b0.TransId_1erAsiento
+	From
+	( 
+		select J0.DocEntry, J0.docnum, J0.DocDate,j1.TransId 'TransId_1erAsiento',J0.Comments,j2.TransId 'TransId_2doAsiento',J0.U_OK1_IFRS, 
+		J1.Memo  
+		from OVPM J0
+		left join OJDT J1 On J0.DocNum=j1.BaseRef
+		left Join OJDT J2 On cast(J1.BaseRef As Nvarchar(500)) =j2.Ref1 and cast(j1.TransId As Nvarchar(500))=j2.Ref2
+		where J0.DocDate &gt;@FechaIni and J1.CreateDate&gt;=@FechaIni and J1.TransType='46'
+	)B0 Where B0.TransId_2doAsiento Is Null
+
+)Z0                   %0% 
+Order By Z0.Tipo, Z0.DocNum</value>
+  </data>
+  <data name="CabeceraRecibosPagoCancelados" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime Declare @FechaFin As DateTime Set DateFormat DMY 
+Set @FechaIni = getdate()-45 Set @FechaFin = '31-12-2030' 
+SELECT Distinct T0.series,T0.refdate,T0.DueDate,T0.TaxDate,T0.Memo,T0.ref1,t0.ref2,T0.ref3,T0.Project,
+T0.TransCode, cast(T1.TransID as nvarchar) 'TransID',T1.Baseref,t3.CardCode
+FROM OJDT T0 Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId INNER JOIN OACT T2 
+ON T1.[Account] = T2.[AcctCode] Inner JOin ORCT t3 on t3.DocEntry='%0%' WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%' And T0.CreatedBy ='%1%'  and T0.StornoToTr is not null order by 5 desc</value>
+  </data>
+  <data name="Pagos_Rec_Pendientes" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+Set DateFormat DMY
+Set @FechaIni = getdate()-45
+Set @FechaFin = '31-12-2030'
+Select *
+From
+(
+	Select '03 - Pagos Recibidos' 'Tipo', B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_OK1_IFRS ,b0.TransId_1erAsiento
+	From
+	( 
+		select J0.DocEntry, J0.docnum, J0.DocDate,j1.TransId 'TransId_1erAsiento',J0.Comments,j2.TransId 'TransId_2doAsiento',J0.U_OK1_IFRS, 
+		J1.Memo  
+		from ORCT J0
+		left join OJDT J1 On J0.DocNum=j1.BaseRef
+		left Join OJDT J2 On cast(J1.BaseRef As Nvarchar(500)) =j2.Ref1 and cast(j1.TransId As Nvarchar(500))=j2.Ref2
+		where J0.DocDate &gt; @FechaIni and J1.CreateDate&gt;=@FechaIni and J1.TransType='24'
+	)B0 Where B0.TransId_2doAsiento Is Null
+)Z0                   
+Order By Z0.Tipo, Z0.DocNum</value>
+  </data>
+  <data name="Doc_Pendientes_FacCompra" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+Set DateFormat DMY
+Set @FechaIni = getdate()-60
+Set @FechaFin = '31-12-2030'
+Select *
+From
+(
+	Select 
+	Case When B0.DocSubType = '--' Then '06 - Factura de Proveedor' Else '06 - Nota Débito de Proveedor' End 'Tipo', 
+	B0.DocEntry, B0.DocNum, B0.DocDate, B0.TransId_2doAsiento, B0.U_EsIndep 
+	From
+	( 
+		Select A0.DocEntry, A0.DocNum, A0.DocDate, A0.TransId 'TransId_1erAsiento', A0.Comments, A1.TransId 'TransId_2doAsiento', A0.U_EsIndep, A0.DocSubType
+		From OPCH A0
+		Left Join OJDT A1 On Cast(A0.DocNum As Nvarchar(500)) = IsNull(A1.Ref1, '') And Cast(A0.TransId As Nvarchar(500)) = IsNull(A1.Ref2, '') And A1.U_OK1_IFRS = 'I'
+		Where A0.DocDate &gt;@FechaIni And A0.DocNum Not In (2879)
+	)B0 Where B0.TransId_2doAsiento Is Null
+)Z0 
+ %0% 
+Order By Z0.Tipo, Z0.DocNum</value>
+  </data>
+  <data name="Lin_Fac_Compra" xml:space="preserve">
+    <value>Declare @FechaIni As DateTime 
+Declare @FechaFin As DateTime 
+Set DateFormat DMY 
+Set @FechaIni = getdate()-60
+Set @FechaFin = '31-12-2030' 
+select aa.Line_ID,aa.shortname,aa.acctcode,aa.U_CTA_IFRS, aa.Debit,Credit,
+/*case when isnull(aa.U_InfoCo01,'')='' then t3.cardcode else aa.U_InfoCo01 end 'U_InfoCo01', se ajusta para mostrar clientes en cuentas 138020*/
+case when isnull(aa.U_InfoCo01,'')='' then (case when aa.U_CTA_IFRS like ('138020%') then replace(t3.cardcode,'p','C') else t3.cardcode end) 
+                                                      else (case when aa.U_CTA_IFRS like ('138020%') then replace(aa.U_InfoCo01,'p','C') else aa.U_InfoCo01 end) 
+end 'U_InfoCo01',
+aa.Project,aa.LineMemo,aa.b,t3.CardCode 
+from (
+	SELECT T1.Line_ID,T1.shortname,t2.acctcode,T2.U_CTA_IFRS, T1.Debit,Credit,T1.U_InfoCo01,
+	T1.Project,T1.LineMemo, 
+	  replace(	
+		replace(
+		  replace(
+			replace(
+			  replace(
+				replace(   
+				 replace(  
+				   replace(	 
+					 replace(
+					   replace(
+						 replace(
+						   replace(
+									LineMemo,'Pagos efectuados - ',''
+								  ),'Fact.proveedores - ',''
+								),'A/R Invoices - ',''
+							   ),'Facturas clientes - ',''
+							),'Factura de proveedores - Cancelación - ',''
+						  ),'A/P Invoices - ',''
+						),'Anticipo de clientes - ',''
+					   ),'Pagos recibidos - ',''
+					 ),'Notas de crédito clientes - ',''
+				  ),'A/R Credit Memos - ',''
+				),'(Reversal) - 276504',''
+			  ),'(Reversal) - 276503',''
+			)'b'
+	FROM OJDT T0 
+	Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId 
+	INNER JOIN OACT T2 ON T1.[Account] = T2.[AcctCode] 
+	WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%' And T0.CreatedBy ='%1%' and T0.TransId='%2%'
+)aa
+left join OCRD T3 on T3.CardCode=aa.b</value>
+  </data>
+  <data name="Cab_NCParcial_anfora" xml:space="preserve">
+    <value>/* Select From [DBO].[OJDT] M0 */
+Declare @FechaIni As DateTime
+Declare @FechaFin As DateTime
+/* WHERE */
+Set DateFormat DMY
+Set @FechaIni =getdate()-95
+Set @FechaFin ='31-12-2030' 
+Select Distinct Top 1 'JOUR' As 'Indicador', A2.U_IdIntegra, A0.DocDate As 'RefDate', A0.TaxDate As 'TaxDate', A0.DocDueDate As 'DueDate', 
+cast(A0. DocNum as nvarchar) As 'Ref1', '' As 'Ref2', A0.JrnlMemo As 'Memo', 'I' As 'U_OK1_IFRS', A0.CardCode, 
+cast(A3.TransId as nvarchar) 'TransId', Cast(A0.DocTotal/A4.DocTotal as numeric(19,2)) As 'Perc',A0.Project 'Project' 
+From ORIN A0 
+Left Join RIN1 A1 On A0.DocEntry = A1.DocEntry 
+Left Join OADM A2 On 1 = 1 
+Inner Join OJDT A3 On cast(A0.DocNum as nvarchar) = A3.Ref1 and A3.memo not like '%Pago%'
+Inner Join OINV A4 On A1.BaseEntry = A4.DocEntry 
+Where A0.DocEntry = '%0%' /*And A3.TransType = '30'*/ and A3.RefDate &gt; @FechaIni</value>
+  </data>
+</root>
