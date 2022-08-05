@@ -944,22 +944,145 @@ from (
 )aa
 left join OCRD T3 on T3.CardCode=aa.b</value>
   </data>
-  <data name="Cab_NCParcial_anfora" xml:space="preserve">
-    <value>/* Select From [DBO].[OJDT] M0 */
-Declare @FechaIni As DateTime
-Declare @FechaFin As DateTime
-/* WHERE */
-Set DateFormat DMY
-Set @FechaIni =getdate()-95
-Set @FechaFin ='31-12-2030' 
-Select Distinct Top 1 'JOUR' As 'Indicador', A2.U_IdIntegra, A0.DocDate As 'RefDate', A0.TaxDate As 'TaxDate', A0.DocDueDate As 'DueDate', 
-cast(A0. DocNum as nvarchar) As 'Ref1', '' As 'Ref2', A0.JrnlMemo As 'Memo', 'I' As 'U_OK1_IFRS', A0.CardCode, 
-cast(A3.TransId as nvarchar) 'TransId', Cast(A0.DocTotal/A4.DocTotal as numeric(19,2)) As 'Perc',A0.Project 'Project' 
-From ORIN A0 
-Left Join RIN1 A1 On A0.DocEntry = A1.DocEntry 
-Left Join OADM A2 On 1 = 1 
-Inner Join OJDT A3 On cast(A0.DocNum as nvarchar) = A3.Ref1 and A3.memo not like '%Pago%'
-Inner Join OINV A4 On A1.BaseEntry = A4.DocEntry 
-Where A0.DocEntry = '%0%' /*And A3.TransType = '30'*/ and A3.RefDate &gt; @FechaIni</value>
+  <data name="Lin_NC_Pend" xml:space="preserve">
+    <value>Select P0.num,'LINJOUR' As 'Indicador', P0.U_AcctCode, Case When P1.LocManTran = 'Y' Then P0.CardCode Else P0.U_AcctCode End CardCode, P0.U_Concepto, P0.U_Debit, P0.U_Credit, 
+IsNull(P0.Project,'')Project, IsNull(P0.U_ProfitCode,'')ProfitCode,P0.InfoCo01,'' 'LineMemo'
+			From (
+				Select 1 'num',A2.U_AcctCode, A2.U_AcctCode As 'CardCode', A2.U_Concepto, IsNUll(A2.U_Debit,0) 'U_Debit', IsNull(A2.U_Credit,0) 'U_Credit', 
+				A1.Project, A2.U_ProfitCode,A0.cardcode 'InfoCo01'
+				From ORIN A0
+				Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry 
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41'
+				Where A0.DocEntry = '%0%'
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode,A0.cardcode
+							
+				Union All
+										
+				Select '2',IsNUll(B0.U_CTA_IFRS,''), IsNUll(B0.U_CTA_IFRS,''), 'Contrapartida', Sum(IsNull(B0.U_Credit,0)), Sum(IsNull(B0.U_Debit,0)), B0.Project, B0.U_ProfitCode,B0.cardcode 
+				From ( 
+				Select A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode
+				From ORIN A0 
+				Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry 
+				Inner Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) = '41' 
+				Left join OCRD A3 On A0.CardCode = A3.CardCode 
+				Left Join OACT A4 On A3.DebPayAcct = A4.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A4.U_CTA_IFRS, A2.U_AcctName, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A2.U_DocEntry, A0.CardCode, A1.Project, A2.U_ProfitCode,A0.cardcode 
+				)B0 
+				Left Join OCRD B1 On B0.CardCode = B1.CardCode 
+				Group By B1.CardCode, B0.U_CTA_IFRS, B0.Project, B0.U_ProfitCode,B0.cardcode 
+							
+				Union All
+							
+				Select '3', A2.U_AcctCode, A2.U_AcctCode, A2.U_Concepto, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,A0.CardCode
+				From ORIN A0
+				Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry
+				Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+				Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+				Group By A2.U_AcctCode, A0.CardCode, A2.U_Concepto, A2.U_Credit, A2.U_Debit, A1.Project, A2.U_ProfitCode
+							
+				Union All
+							
+				select '4' 'num', J0.Cuenta,J0.[I.], J0.U_Concepto, J0.U_Debit, J0.U_Credit, J0.Project, J0.U_ProfitCode,J0.CardCode
+				FROM
+				(
+					Select A0.U_Contrapartida'Cuenta', A0.U_Contrapartida'I.', A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project, A1.U_ProfitCode,
+					case when A0.U_Concepto like 'CAPITAL MTO.' and A1.U_Concepto='CAPITAL LLANTAS' THEN '1' 
+					WHEN A0.U_Concepto like 'CAPITAL LLANTAS' and A1.U_Concepto='CAPITAL MANTENIMIENTO IFRS' THEN '1'                                   
+					WHEN A0.U_Concepto='CAPITAL GASTOS' AND A1.U_Concepto='CAPITAL CUPO' THEN '1' 
+					WHEN A0.U_Concepto='CAPITAL CUPO' AND A1.U_Concepto='CAPITAL GASTOS OPERACION PUBLICO IFRS' THEN '1' 					
+					WHEN A0.U_Concepto like 'CAPITAL MTO.' and A1.U_Concepto='Mantenimiento' THEN '1'     
+					ELSE '2' END 'TEST',A1.CardCode
+					From [@ACS_CTACONCEPTO] A0
+					Inner Join
+					(
+						Select A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,a2.U_Concepto,A0.CardCode
+							From ORIN A0
+							Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry
+							Left Join [@ACS_ASIENTOSL] A2 On A1.BaseEntry = A2.U_DocEntry And Substring(IsNull(A2.U_AcctCode,''),1,2) &lt;&gt; '41'
+							Where A0.DocEntry = '%0%' And IsNull(A2.U_AcctCode,'') &lt;&gt; ''
+							Group By A2.U_AcctCode, A2.U_Debit, A2.U_Credit, A1.Project, A2.U_ProfitCode,a2.U_Concepto,A0.CardCode
+					) A1 On A0.U_Cuenta = A1.U_AcctCode
+					Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.U_ProfitCode,a1.U_Concepto,A1.CardCode
+				)J0
+				where J0.TEST&lt;&gt;'1'
+
+				Union All
+							
+				Select '5',A3.U_CTA_IFRS 'Cuenta', A3.U_CTA_IFRS, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'Credito', 0 As 'Debito', A4.Project As 'Project', 
+				'' As 'U_ProfitCode',a0.CardCode
+				From ORIN A0
+				Inner Join RIN5 A1 On A0.DocEntry = A1.AbsEntry
+				Left Join OWHT A2 On A1.WTCode = A2.WTCode
+				Left Join OACT A3 On A1.Account = A3.AcctCode
+                Inner Join RIN1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+				Where A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select '6',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Debit, A1.U_Credit, A1.Project As 'U_Project', '' As 'U_ProfitCode',a1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'I. ' + A2.WTName As 'Concepto', A1.U_Ret_ML 'U_Credit', 0 As 'U_Debit', A4.Project
+					From ORIN A0
+					Inner Join RIN5 A1 On A0.DocEntry = A1.AbsEntry
+					Left Join OWHT A2 On A1.WTCode = A2.WTCode
+					Left Join OACT A3 On A1.Account = A3.AcctCode
+                    Inner Join INV1 A4 On A0.DocEntry = A4.DocEntry And A4.LineNum = (Select Min(B0.LineNum) From INV1 B0 Where B0.DocEntry = A0.DocEntry Group By B0.DocEntry)
+					Where A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Debit, A1.U_Credit ,a1.CardCode
+							
+				Union All
+							
+				Select '7',A3.U_CTA_IFRS  'Cuenta', A3.U_CTA_IFRS, 'IVA' 'Concepto', 0 As 'Debito', IsNull(A1.VatSum,0) 'Credito', A1.Project As 'U_Project', '' As 'U_ProfitCode',a0.CardCode
+				From ORIN A0
+				Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+				Left Join OSTA A2 On A1.TaxCode = A2.Code
+				Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+				Where A0.DocEntry = '%0%'
+				Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+							
+				Union All
+							
+				Select '8',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit', A1.Project As 'U_Project', '' As 'U_ProfitCode',A1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A3.U_CTA_IFRS 'Cuenta', A0.CardCode, 'IVA' 'Concepto', 0 As 'U_Debit', IsNull(A1.VatSum,0) 'U_Credit', A1.Project
+					From ORIN A0
+					Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry And A1.VatPrcnt &gt; 0 
+					Left Join OSTA A2 On A1.TaxCode = A2.Code
+					Inner Join OACT A3 On A2.SalesTax = A3.AcctCode 
+					Where A0.DocEntry = '%0%'
+					Group By A3.U_CTA_IFRS, A0.CardCode, A1.Project, A1.VatSum
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.Project, A1.U_Credit,a1.CardCode
+							
+				Union All
+							
+				Select '9',A2.U_CTA_IFRS 'Cuenta', A2.U_CTA_IFRS, 'A. INTERES MORA' As 'Concepto', 0 As 'Debito', IsNull(A1.LineTotal,0) 'Credito', A1.Project, A1.OcrCode,a0.CardCode
+				From ORIN A0
+				Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry
+				Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+				Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+							
+				Union All
+							
+				Select '10',A0.U_Contrapartida, A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit 'U_Debit', '0' 'U_Credit' , A1.Project, A1.OcrCode,a1.CardCode
+				From [@ACS_CTACONCEPTO] A0
+				Inner Join
+				( 
+					Select A2.U_CTA_IFRS 'Cuenta', A0.CardCode, 'A. INTERES MORA' As 'Concepto', 0 As 'U_Debit', IsNull(A1.LineTotal,0) 'U_Credit', A1.Project, A1.OcrCode
+					From ORIN A0
+					Inner Join RIN1 A1 On A0.DocEntry = A1.DocEntry
+					Inner Join OACT A2 On A1.AcctCode = A2.AcctCode
+					Where A1.ItemCode = 'INT_MORA' And A0.DocEntry = '%0%'
+				) A1 On A0.U_Cuenta = A1.Cuenta
+				Group By A0.U_Contrapartida, A0.U_Concepto, A1.U_Credit, A1.Project, A1.OcrCode,a1.CardCode 
+			)P0
+			Left Join OACT P1 On P0.U_AcctCode = P1.AcctCode</value>
+    <comment>lineas NC pendientes</comment>
   </data>
 </root>

@@ -135,7 +135,7 @@ namespace AsientoEspejo.clases
                 Empresa.DbServerType = SAPbobsCOM.BoDataServerTypes.dst_MSSQL2012;
                 Empresa.DbUserName = ConfigurationManager.AppSettings.Get("ServerDBUser").ToString();
                 Empresa.DbPassword = ConfigurationManager.AppSettings.Get("ServerDBPass");
-                Empresa.CompanyDB = ConfigurationManager.AppSettings.Get("BD2").ToString();
+                Empresa.CompanyDB = ConfigurationManager.AppSettings.Get("BD1").ToString();
                 Empresa.UserName = ConfigurationManager.AppSettings.Get("UserSAP1").ToString();
                 Empresa.Password = ConfigurationManager.AppSettings.Get("PasswordSAP1").ToString();
                 Empresa.UseTrusted = false;
@@ -280,7 +280,7 @@ namespace AsientoEspejo.clases
             consultas consl = new consultas();
             try
             {
-                conexion();
+                //conexion();
                 oRecordset = Empresa.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
                 Query = App_GlobalResources.Resource1.doc_pendientes;
                 Query = Query.Replace("%0%", "where Z0.Tipo='01 - Factura de Venta'");
@@ -636,7 +636,7 @@ namespace AsientoEspejo.clases
                     Number = oRecordset.Fields.Item("DocNum").Value;
 
                     oRecordsetCab = Empresa.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                    Query1 = App_GlobalResources.Resource1.Cab_NCParcial_anfora;
+                    Query1 = App_GlobalResources.Resource1.Cab_NC;
                     Query1 = Query1.Replace("%0%", DocEntry.ToString());
                     oRecordsetCab.DoQuery(Query1);
                     SAPbobsCOM.JournalEntries JournalEntry = Empresa.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oJournalEntries);
@@ -658,8 +658,8 @@ namespace AsientoEspejo.clases
 
                     //Lineas
                     oRecordsetLines = Empresa.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset);
-                    Query2 = App_GlobalResources.Resource1.Lin_NC;
-                    Query2 = Query2.Replace("%0%", TransID.ToString());
+                    Query2 = App_GlobalResources.Resource1.Lin_NC_Pend;
+                    Query2 = Query2.Replace("%0%", DocEntry.ToString());
                     Query2 = Query2.Replace("%1%", Perc.ToString());
                     oRecordsetLines = ((SAPbobsCOM.Recordset)(Empresa.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)));
                     oRecordsetLines.DoQuery(Query2);
@@ -673,9 +673,9 @@ namespace AsientoEspejo.clases
                         if (sumdebitcredit != 0)
                         {
                             JournalEntry.Lines.AccountCode = (oRecordsetLines.Fields.Item("U_AcctCode").Value);
-                            JournalEntry.Lines.Debit = oRecordsetLines.Fields.Item("U_Debit").Value;
-                            JournalEntry.Lines.Credit = oRecordsetLines.Fields.Item("U_Credit").Value;
-                            JournalEntry.Lines.UserFields.Fields.Item("U_InfoCo01").Value = oRecordsetLines.Fields.Item("U_InfoCo01").Value; ;
+                            JournalEntry.Lines.Credit = oRecordsetLines.Fields.Item("U_Debit").Value;
+                            JournalEntry.Lines.Debit = oRecordsetLines.Fields.Item("U_Credit").Value;
+                            JournalEntry.Lines.UserFields.Fields.Item("U_InfoCo01").Value = oRecordsetLines.Fields.Item("InfoCo01").Value;
                             JournalEntry.Lines.ProjectCode = oRecordsetCab.Fields.Item("Project").Value;
                             //JournalEntry.Lines.LineMemo = oRecordsetLines.Fields.Item("LineMemo").Value;
                             JournalEntry.Lines.Add();
