@@ -267,13 +267,13 @@ namespace AsientoEspejo.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select P0.num,&apos;LINJOUR&apos; As &apos;Indicador&apos;, P0.U_AcctCode, Case When P1.LocManTran = &apos;Y&apos; Then P0.CardCode Else P0.U_AcctCode End CardCode, P0.U_Concepto, P0.U_Debit, P0.U_Credit, 
-        ///IsNull(P0.Project,&apos;&apos;)Project, IsNull(P0.U_ProfitCode,&apos;&apos;)ProfitCode,P0.InfoCo01,&apos;&apos; &apos;LineMemo&apos;
-        ///			From (
-        ///				Select 1 &apos;num&apos;,A2.U_AcctCode, A2.U_AcctCode As &apos;CardCode&apos;, A2.U_Concepto, IsNUll(A2.U_Debit,0) &apos;U_Debit&apos;, IsNull(A2.U_Credit,0) &apos;U_Credit&apos;, 
-        ///				A1.Project, A2.U_ProfitCode,A0.cardcode &apos;InfoCo01&apos;
-        ///				From ORIN A0
-        ///				Inner  [resto de la cadena truncado]&quot;;.
+        ///   Busca una cadena traducida similar a Select &apos;LINJOUR&apos; As &apos;Indicador&apos;, A1.Account As &apos;U_AcctCode&apos;, A1.ShortName As &apos;CardCode&apos;, 
+        ///Cast(A1.Debit * replace(&apos;%1%&apos;,&apos;,&apos;,&apos;.&apos;) As Numeric(19, 2)) As &apos;U_Credit&apos;, 
+        ///Cast(A1.Credit * replace(&apos;%1%&apos;,&apos;,&apos;,&apos;.&apos;) As Numeric(19,2)) As &apos;U_Debit&apos;, 
+        ///A1.Project, A1.ProfitCode, A1. U_Concepto ,A2.CardCode &apos;U_InfoCo01&apos; 
+        ///From OJDT A0
+        ///Inner Join JDT1 A1 On A0.TransId = A1.TransId 
+        ///inner join OCRD A2 On replace(replace(replace(A0.Memo,&apos;Facturas clientes - &apos;,&apos;&apos;),&apos;A/R Invoices - &apos;,&apos;&apos;),&apos;Notas de crédito clientes - &apos;,&apos;&apos;)=A2 [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Lin_NC_Pend {
             get {

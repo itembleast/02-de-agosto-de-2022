@@ -22,9 +22,9 @@ namespace AsientoEspejo.clases
                 //
 
                 //MessageBox.Show("creacion asientos fact de venta");
-                //con.fac();
+                con.fac();
                 //MessageBox.Show("creacion asientos Notas credito");
-                //con.NC();
+                con.NC();
                 //creacion NC parciales.
                 con.NCP();
                 //MessageBox.Show("creacion asientos manuales");
