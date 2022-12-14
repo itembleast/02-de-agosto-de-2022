@@ -66,11 +66,11 @@ namespace AsientoEspejo.App_GlobalResources {
         ///Declare @FechaFin As DateTime
         ////* WHERE */
         ///Set DateFormat DMY
-        ///Set @FechaIni =getdate()-250
+        ///Set @FechaIni =getdate()-60
         ///Set @FechaFin =&apos;31-12-2030&apos; 
         ///Select Distinct Top 1 &apos;JOUR&apos; As &apos;Indicador&apos;, A2.U_IdIntegra, A0.DocDate As &apos;RefDate&apos;, A0.TaxDate As &apos;TaxDate&apos;, A0.DocDueDate As &apos;DueDate&apos;, 
         ///cast(A0. DocNum as nvarchar) As &apos;Ref1&apos;, &apos;&apos; As &apos;Ref2&apos;, A0.JrnlMemo As &apos;Memo&apos;, &apos;I&apos; As &apos;U_OK1_IFRS&apos;, A0.CardCode, 
-        ///cast(A3.TransId as nvarchar) &apos;TransId&apos;, Cast(A0.DocTotal/A4.DocTotal [resto de la cadena truncado]&quot;;.
+        ///cast(A3.TransId as nvarchar) &apos;TransId&apos;, Cast(A0.DocTotal/A4.DocTotal  [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Cab_NC {
             get {

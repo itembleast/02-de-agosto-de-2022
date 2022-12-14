@@ -139,7 +139,7 @@ Declare @FechaIni As DateTime
 Declare @FechaFin As DateTime
 /* WHERE */
 Set DateFormat DMY
-Set @FechaIni =getdate()-250
+Set @FechaIni =getdate()-60
 Set @FechaFin ='31-12-2030' 
 Select Distinct Top 1 'JOUR' As 'Indicador', A2.U_IdIntegra, A0.DocDate As 'RefDate', A0.TaxDate As 'TaxDate', A0.DocDueDate As 'DueDate', 
 cast(A0. DocNum as nvarchar) As 'Ref1', '' As 'Ref2', A0.JrnlMemo As 'Memo', 'I' As 'U_OK1_IFRS', A0.CardCode, 
