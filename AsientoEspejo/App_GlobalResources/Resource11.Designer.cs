@@ -66,11 +66,11 @@ namespace AsientoEspejo.App_GlobalResources {
         ///Declare @FechaFin As DateTime
         ////* WHERE */
         ///Set DateFormat DMY
-        ///Set @FechaIni =getdate()-60
+        ///Set @FechaIni =getdate()-300
         ///Set @FechaFin =&apos;31-12-2030&apos; 
         ///Select Distinct Top 1 &apos;JOUR&apos; As &apos;Indicador&apos;, A2.U_IdIntegra, A0.DocDate As &apos;RefDate&apos;, A0.TaxDate As &apos;TaxDate&apos;, A0.DocDueDate As &apos;DueDate&apos;, 
         ///cast(A0. DocNum as nvarchar) As &apos;Ref1&apos;, &apos;&apos; As &apos;Ref2&apos;, A0.JrnlMemo As &apos;Memo&apos;, &apos;I&apos; As &apos;U_OK1_IFRS&apos;, A0.CardCode, 
-        ///cast(A3.TransId as nvarchar) &apos;TransId&apos;, Cast(A0.DocTotal/A4.DocTotal  [resto de la cadena truncado]&quot;;.
+        ///cast(A3.TransId as nvarchar) &apos;TransId&apos;, Cast(A0.DocTotal/A4.DocTotal [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Cab_NC {
             get {
@@ -252,13 +252,17 @@ namespace AsientoEspejo.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select &apos;LINJOUR&apos; As &apos;Indicador&apos;, A1.Account As &apos;U_AcctCode&apos;, A1.ShortName As &apos;CardCode&apos;, 
-        ////*Cast(A1.Debit * replace(&apos;%1%&apos;,&apos;,&apos;,&apos;.&apos;) As Numeric(19, 2)) As &apos;U_Credit&apos;, 
-        ///Cast(A1.Credit * replace(&apos;%1%&apos;,&apos;,&apos;,&apos;.&apos;) As Numeric(19,2)) As &apos;U_Debit&apos;,//se quitan por error en la nc 1308383 y otras.. */ A1.Debit As &apos;U_Credit&apos;, A1.Credit As &apos;U_Debit&apos;,
-        ///A1.Project, A1.ProfitCode, A1. U_Concepto ,A2.CardCode &apos;U_InfoCo01&apos; 
-        ///From OJDT A0
-        ///Inner Join JDT1 A1 On A0.TransId = A1.TransId 
-        ///inner join OCRD A2 On replace(replace(re [resto de la cadena truncado]&quot;;.
+        ///   Busca una cadena traducida similar a Select &apos;LINJOUR&apos; As &apos;Indicador&apos;, case when A1.Account=&apos;41552101R&apos; then &apos;41602101R&apos;  
+        ///when A1.Account=&apos;41552201R&apos; then &apos;41602201R&apos;
+        ///when A1.Account=&apos;41559603R&apos; then &apos;41609603R&apos; 
+        ///when A1.Account=&apos;41559604R&apos; then &apos;41609604R&apos; 
+        ///when A1.Account=&apos;41559701R&apos; then &apos;41609701R&apos; 
+        ///when A1.Account=&apos;41559702R&apos; then &apos;41609702R&apos; 
+        ///when A1.Account=&apos;41559703R&apos; then &apos;41609703R&apos; 
+        ///when A1.Account=&apos;41561501R&apos; then &apos;41601501R&apos; 
+        ///when A1.Account=&apos;41561601R&apos; then &apos;41601601R&apos; 
+        ///when A1.Account=&apos;41561603R&apos; then &apos;41601603R&apos; 
+        ///when [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Lin_NC {
             get {

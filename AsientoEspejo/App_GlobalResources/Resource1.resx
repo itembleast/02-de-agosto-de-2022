@@ -139,7 +139,7 @@ Declare @FechaIni As DateTime
 Declare @FechaFin As DateTime
 /* WHERE */
 Set DateFormat DMY
-Set @FechaIni =getdate()-60
+Set @FechaIni =getdate()-300
 Set @FechaFin ='31-12-2030' 
 Select Distinct Top 1 'JOUR' As 'Indicador', A2.U_IdIntegra, A0.DocDate As 'RefDate', A0.TaxDate As 'TaxDate', A0.DocDueDate As 'DueDate', 
 cast(A0. DocNum as nvarchar) As 'Ref1', '' As 'Ref2', A0.JrnlMemo As 'Memo', 'I' As 'U_OK1_IFRS', A0.CardCode, 
@@ -741,7 +741,32 @@ IsNull(P0.Project,'')Project, IsNull(P0.U_ProfitCode,'')ProfitCode,P0.InfoCo01,'
 			Left Join OACT P1 On P0.U_AcctCode = P1.AcctCode</value>
   </data>
   <data name="Lin_NC" xml:space="preserve">
-    <value>Select 'LINJOUR' As 'Indicador', A1.Account As 'U_AcctCode', A1.ShortName As 'CardCode', 
+    <value>Select 'LINJOUR' As 'Indicador', case when A1.Account='41552101R' then '41602101R'  
+when A1.Account='41552201R' then '41602201R'
+when A1.Account='41559603R' then '41609603R' 
+when A1.Account='41559604R' then '41609604R' 
+when A1.Account='41559701R' then '41609701R' 
+when A1.Account='41559702R' then '41609702R' 
+when A1.Account='41559703R' then '41609703R' 
+when A1.Account='41561501R' then '41601501R' 
+when A1.Account='41561601R' then '41601601R' 
+when A1.Account='41561603R' then '41601603R' 
+when A1.Account='41561701R' then '41601701R' 
+when A1.Account='41561705R' then '41601705R' else A1.Account
+end 'U_AcctCode',
+case when A1.ShortName='41552101R' then '41602101R' 
+when A1.ShortName='41552201R' then '41602201R' 
+when A1.ShortName='41559603R' then '41609603R' 
+when A1.ShortName='41559604R' then '41609604R' 
+when A1.ShortName='41559701R' then '41609701R' 
+when A1.ShortName='41559702R' then '41609702R' 
+when A1.ShortName='41559703R' then '41609703R' 
+when A1.ShortName='41561501R' then '41601501R' 
+when A1.ShortName='41561601R' then '41601601R' 
+when A1.ShortName='41561603R' then '41601603R' 
+when A1.ShortName='41561701R' then '41601701R' 
+when A1.ShortName='41561705R' then '41601705R' else A1.Account 
+end 'CardCode', 
 /*Cast(A1.Debit * replace('%1%',',','.') As Numeric(19, 2)) As 'U_Credit', 
 Cast(A1.Credit * replace('%1%',',','.') As Numeric(19,2)) As 'U_Debit',//se quitan por error en la nc 1308383 y otras.. */ A1.Debit As 'U_Credit', A1.Credit As 'U_Debit',
 A1.Project, A1.ProfitCode, A1. U_Concepto ,A2.CardCode 'U_InfoCo01' 
