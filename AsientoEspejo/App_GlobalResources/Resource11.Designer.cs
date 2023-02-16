@@ -242,8 +242,8 @@ namespace AsientoEspejo.App_GlobalResources {
         ///Set @FechaFin = &apos;31-12-2030&apos; 
         ///select aa.Line_ID,aa.shortname,aa.acctcode,aa.U_CTA_IFRS, aa.Debit,Credit,
         ////*case when isnull(aa.U_InfoCo01,&apos;&apos;)=&apos;&apos; then t3.cardcode else aa.U_InfoCo01 end &apos;U_InfoCo01&apos;, se ajusta para mostrar clientes en cuentas 138020*/
-        ///case when isnull(aa.U_InfoCo01,&apos;&apos;)=&apos;&apos; then (case when aa.U_CTA_IFRS like (&apos;138020%&apos;) then replace(t3.cardcode,&apos;p&apos;,&apos;C&apos;) else t3.cardcode end) 
-        /// [resto de la cadena truncado]&quot;;.
+        ///case when isnull(aa.U_InfoCo01,&apos;&apos;)=&apos;&apos; then (case when aa.U_CTA_IFRS like (&apos;138020%&apos;) then aa.snproj else t3.cardcode end) 
+        ///                    [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Lin_Fac_Compra {
             get {

@@ -930,8 +930,8 @@ Set @FechaIni = getdate()-60
 Set @FechaFin = '31-12-2030' 
 select aa.Line_ID,aa.shortname,aa.acctcode,aa.U_CTA_IFRS, aa.Debit,Credit,
 /*case when isnull(aa.U_InfoCo01,'')='' then t3.cardcode else aa.U_InfoCo01 end 'U_InfoCo01', se ajusta para mostrar clientes en cuentas 138020*/
-case when isnull(aa.U_InfoCo01,'')='' then (case when aa.U_CTA_IFRS like ('138020%') then replace(t3.cardcode,'p','C') else t3.cardcode end) 
-                                                      else (case when aa.U_CTA_IFRS like ('138020%') then replace(aa.U_InfoCo01,'p','C') else aa.U_InfoCo01 end) 
+case when isnull(aa.U_InfoCo01,'')='' then (case when aa.U_CTA_IFRS like ('138020%') then aa.snproj else t3.cardcode end) 
+                                                      else (case when aa.U_CTA_IFRS like ('138020%') then aa.snproj else aa.U_InfoCo01 end) 
 end 'U_InfoCo01',
 aa.Project,aa.LineMemo,aa.b,t3.CardCode 
 from (
@@ -961,11 +961,11 @@ from (
 				  ),'A/R Credit Memos - ',''
 				),'(Reversal) - 276504',''
 			  ),'(Reversal) - 276503',''
-			)'b'
+			)'b',J0.U_cardCode'SNProj'
 	FROM OJDT T0 
 	Inner JOIN JDT1 T1 ON T0.TransId=T1.TransId 
-	INNER JOIN OACT T2 ON T1.[Account] = T2.[AcctCode] 
-	WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%' And T0.CreatedBy ='%1%' and T0.TransId='%2%'
+	INNER JOIN OACT T2 ON T1.[Account] = T2.[AcctCode]                          left join OPRJ J0 On J0.prjcode= T1.Project
+	WHERE T0.RefDate &gt; @FechaIni and T0.BaseRef='%0%'  And T0.CreatedBy ='%1%' and T0.TransId='%2%'
 )aa
 left join OCRD T3 on T3.CardCode=aa.b</value>
   </data>
